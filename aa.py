@@ -11,13 +11,12 @@ def capture_frames(cap):
         if cv2.waitKey(1) == ord('q'):
             break
 
-# Open camera
+# Open camera with increased buffer size
 cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
-
-# Set dimensions and frame rate
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 cap.set(cv2.CAP_PROP_FPS, 30)
+cap.set(cv2.CAP_PROP_BUFFERSIZE, 3)  # Adjust buffer size as needed
 
 # Start a separate thread for capturing frames
 capture_thread = threading.Thread(target=capture_frames, args=(cap,))
