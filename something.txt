@@ -1,0 +1,1 @@
+ffmpeg -f v4l2 -i /dev/video0 -pix_fmt yuv420p -r 30 -s 640x480 -q:v 1 -f mjpeg udp://localhost:1234
