@@ -1,1 +1,2 @@
 ffmpeg -f v4l2 -i /dev/video0 -pix_fmt yuv420p -r 30 -s 640x480 -q:v 1 -f mjpeg udp://localhost:1234
+cvlc v4l2:///dev/video0 --sout '#transcode{vcodec=mp4v}:rtp{sdp=rtsp://:8554/stream}' --no-audio
